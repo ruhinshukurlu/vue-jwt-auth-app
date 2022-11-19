@@ -55,6 +55,8 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
     data() {
         return {
@@ -74,11 +76,20 @@ export default {
                 surname : this.surname,
                 email:this.email,
                 phone_number:this.phone,
+                user_type:"school_admin",
                 password:this.password,
                 password2:this.password_confirm
             }
 
             console.log({data});
+
+            axios.post('http://127.0.0.1:8000/api/v1/auth/register/', data)
+            .then((res)=>{
+                console.log('result : ', res);
+            })
+            .catch((err)=>{
+                console.log('error : ', err);
+            })
         }
     },
 }
