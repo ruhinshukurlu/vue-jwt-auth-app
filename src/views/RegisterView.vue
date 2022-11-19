@@ -82,6 +82,7 @@ export default {
             }
 
             const response = await axios.post('auth/register/', data)
+            this.$router.push('/login')
             console.log({response});
         }
     },

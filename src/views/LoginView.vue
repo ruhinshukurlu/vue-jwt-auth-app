@@ -6,7 +6,7 @@
         </div>
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                <form @submit.prevent="register" class="space-y-6" >
+                <form @submit.prevent="login" class="space-y-6" >
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
                         <div class="mt-1">
@@ -41,12 +41,15 @@ export default {
     },
 
     methods: {
-        async register(){
+        async login(){
 
             const response = await axios.post('auth/login/', {
                 email:this.email,
                 password:this.password,
             })
+
+            localStorage.setItem('token',response.data.access)
+            this.$router.push('/')
 
             console.log({response});
         }
