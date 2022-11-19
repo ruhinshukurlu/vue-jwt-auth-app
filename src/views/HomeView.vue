@@ -1,5 +1,12 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<script >
+import axios from 'axios'
+
+export default {
+  async created() {
+    const response = await axios.get('auth/user/')
+    console.log('user response : ', response);
+  },
+};
 </script>
 
 <template>

@@ -55,6 +55,8 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
     data() {
         return {
@@ -68,17 +70,20 @@ export default {
     },
 
     methods: {
-        register(){
+        async register(){
             const data = {
                 name : this.name,
                 surname : this.surname,
                 email:this.email,
                 phone_number:this.phone,
+                user_type:"school_admin",
                 password:this.password,
                 password2:this.password_confirm
             }
 
-            console.log({data});
+            const response = await axios.post('auth/register/', data)
+            this.$router.push('/login')
+            console.log({response});
         }
     },
 }

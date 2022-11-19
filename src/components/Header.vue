@@ -4,6 +4,7 @@
         <nav class="space-x-2">
             <RouterLink class="hover:text-gray-500" to="/about">About</RouterLink>
             <RouterLink class="hover:text-gray-500" to="/register">Register</RouterLink>
+            <RouterLink class="hover:text-gray-500" to="/login">Login</RouterLink>
         </nav>
     </header>
 </template>
