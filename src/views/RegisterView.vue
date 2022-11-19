@@ -70,7 +70,7 @@ export default {
     },
 
     methods: {
-        register(){
+        async register(){
             const data = {
                 name : this.name,
                 surname : this.surname,
@@ -81,15 +81,8 @@ export default {
                 password2:this.password_confirm
             }
 
-            console.log({data});
-
-            axios.post('http://127.0.0.1:8000/api/v1/auth/register/', data)
-            .then((res)=>{
-                console.log('result : ', res);
-            })
-            .catch((err)=>{
-                console.log('error : ', err);
-            })
+            const response = await axios.post('auth/register/', data)
+            console.log({response});
         }
     },
 }

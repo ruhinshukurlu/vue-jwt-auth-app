@@ -41,19 +41,14 @@ export default {
     },
 
     methods: {
-        register(){
-            const data = {
+        async register(){
+
+            const response = await axios.post('auth/login/', {
                 email:this.email,
                 password:this.password,
-            }
+            })
 
-            axios.post('http://127.0.0.1:8000/api/v1/auth/login/', data)
-            .then((res)=>{
-                console.log('result : ', res);
-            })
-            .catch((err)=>{
-                console.log('error : ', err);
-            })
+            console.log({response});
         }
     },
 }
